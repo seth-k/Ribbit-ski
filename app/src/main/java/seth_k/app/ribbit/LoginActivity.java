@@ -1,8 +1,10 @@
 package seth_k.app.ribbit;
 
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
@@ -27,6 +29,9 @@ public class LoginActivity extends ActionBarActivity {
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         mSignUpTextView = (TextView) findViewById(R.id.signup_text);
         mSignUpTextView.setOnClickListener(new View.OnClickListener() {

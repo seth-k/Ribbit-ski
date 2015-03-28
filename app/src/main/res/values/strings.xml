@@ -12,7 +12,8 @@
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="login_button_label">Login</string>
-    <string name="signup_text">Sign Up!</string>
+    <string name="signup_text">Don\'t have an account? Sign up!</string>
+    <string name="signup_button_text">Sign up!</string>
     <string name="signup_error_message">Please make sure you enter a username, password, and email address.</string>
     <string name="signup_error_title">Oops!</string>
     <string name="title_activity_signup">SignupActivity</string>
@@ -45,4 +46,6 @@
     <string name="success_message">Message sent!</string>
     <string name="error_sending_message">There was an error sending your message. Please try again.</string>
     <string name="title_activity_view_image">ViewImageActivity</string>
+    <string name="content_desc_background">Ribbit Frog Background Image</string>
+    <string name="subtitle">A Treehouse Project</string>
 </resources>
