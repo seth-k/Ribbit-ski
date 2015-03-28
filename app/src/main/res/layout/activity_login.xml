@@ -84,7 +84,10 @@
         android:layout_below="@+id/user_pw_box"
         android:text="@string/login_button_label"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin" />
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_custom"
+        android:textSize="13sp"
+        android:textColor="@color/text_color"/>
 
     <TextView
         android:id="@+id/signup_text"
