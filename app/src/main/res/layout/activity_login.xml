@@ -74,7 +74,6 @@
             android:textSize="16sp"/>
     </LinearLayout>
 
-
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
