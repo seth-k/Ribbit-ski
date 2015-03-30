@@ -55,6 +55,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         return null;
     }
 
+    /**
+     * Get the id for the tab's icon
+     * @param position The position of the icon requested
+     * @return The android id of the drawable for the icon
+     */
     public int getIcon (int position) {
         switch (position) {
             case 0:
