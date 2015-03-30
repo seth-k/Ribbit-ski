@@ -1,8 +1,6 @@
 package seth_k.app.ribbit;
 
 import android.content.Context;
-import android.content.IntentFilter;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +60,5 @@ public class MessageAdapter extends ArrayAdapter<ParseObject> {
         mMessages.clear();
         mMessages.addAll(messages);
         notifyDataSetChanged();
-    };
-
+    }
 }

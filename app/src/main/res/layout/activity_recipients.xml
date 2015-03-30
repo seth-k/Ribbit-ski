@@ -36,5 +36,5 @@
         tools:visibility="visible"
         android:drawableLeft="@drawable/ic_action_send_now"
         android:textColor="@android:color/white"
-        android:background="@color/button_material_dark"/>
+        android:background="@android:color/darker_gray"/>
 </RelativeLayout>

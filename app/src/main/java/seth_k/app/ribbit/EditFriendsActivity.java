@@ -2,11 +2,8 @@ package seth_k.app.ribbit;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -54,7 +51,7 @@ public class EditFriendsActivity extends ListActivity {
                     // Success
                     mUsers = users;
                     String[] usernames = new String[mUsers.size()];
-                    int i=0;
+                    int i = 0;
                     for (ParseUser user : mUsers) {
                         usernames[i] = user.getUsername();
                         i++;
@@ -87,7 +84,7 @@ public class EditFriendsActivity extends ListActivity {
             public void done(List<ParseUser> friends, ParseException e) {
                 if (e == null) {
                     // list returned - log for a match
-                    for (int i = 0; i<mUsers.size(); i++){
+                    for (int i = 0; i < mUsers.size(); i++) {
                         ParseUser user = mUsers.get(i);
                         for (ParseUser friend : friends) {
                             if (friend.getObjectId().equals(user.getObjectId())) {

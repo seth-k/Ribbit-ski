@@ -1,11 +1,11 @@
 package seth_k.app.ribbit;
 
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -17,7 +17,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends Activity {
 
     protected TextView mSignUpTextView;
     protected EditText mUsername;
@@ -26,11 +26,11 @@ public class LoginActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         actionBar.hide();
 
         mSignUpTextView = (TextView) findViewById(R.id.signup_text);
@@ -59,13 +59,13 @@ public class LoginActivity extends ActionBarActivity {
                     dialog.show();
                 } else {
                     // Login
-                    setSupportProgressBarIndeterminateVisibility(true);
+                    setProgressBarIndeterminateVisibility(true);
                     ParseUser.logInInBackground(username, password, new LogInCallback() {
                         @Override
                         public void done(ParseUser parseUser, ParseException e) {
-                            setSupportProgressBarIndeterminateVisibility(false);
+                            setProgressBarIndeterminateVisibility(false);
 
-                            if (e==null) {
+                            if (e == null) {
                                 // Success
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

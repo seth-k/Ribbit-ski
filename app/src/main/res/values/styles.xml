@@ -1,6 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
-    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <!--<style name="AppTheme" parent="Theme.Holo.Light.DarkActionBar">-->
     <!-- Customize your theme here. -->
     <!--</style>-->
     <!-- File created by the Android Action Bar Style Generator
@@ -21,63 +21,63 @@
     limitations under the License.
     -->
 
-    <style name="Theme.Ribbit" parent="@style/Theme.AppCompat.Light">
-        <item name="actionBarItemBackground">@drawable/selectable_background_ribbit</item>
-        <item name="popupMenuStyle">@style/PopupMenu.Ribbit</item>
-        <item name="dropDownListViewStyle">@style/DropDownListView.Ribbit</item>
-        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Ribbit</item>
-        <item name="actionDropDownStyle">@style/DropDownNav.Ribbit</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid.Ribbit</item>
-        <item name="actionModeBackground">@drawable/cab_background_top_ribbit</item>
-        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_ribbit</item>
-        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Ribbit</item>
+    <style name="Theme.Ribbit" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_ribbit</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Ribbit</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Ribbit</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Ribbit</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Ribbit</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Ribbit</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_ribbit</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_ribbit</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Ribbit</item>
 
         <item name="android:editTextStyle">@style/EditTextAppTheme</item>
 
     </style>
 
-    <style name="ActionBar.Solid.Ribbit" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="background">@drawable/ab_solid_ribbit</item>
-        <item name="backgroundStacked">@drawable/ab_stacked_solid_ribbit</item>
-        <item name="backgroundSplit">@drawable/ab_bottom_solid_ribbit</item>
-        <item name="progressBarStyle">@style/ProgressBar.Ribbit</item>
+    <style name="ActionBar.Solid.Ribbit" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_ribbit</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_ribbit</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_ribbit</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Ribbit</item>
     </style>
 
-    <style name="ActionBar.Transparent.Ribbit" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="background">@drawable/ab_transparent_ribbit</item>
-        <item name="progressBarStyle">@style/ProgressBar.Ribbit</item>
+    <style name="ActionBar.Transparent.Ribbit" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_ribbit</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Ribbit</item>
     </style>
 
-    <style name="PopupMenu.Ribbit" parent="@style/Widget.AppCompat.Light.PopupMenu">
+    <style name="PopupMenu.Ribbit" parent="@android:style/Widget.Holo.Light.PopupMenu">
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_ribbit</item>
     </style>
 
-    <style name="DropDownListView.Ribbit" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+    <style name="DropDownListView.Ribbit" parent="@android:style/Widget.Holo.Light.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_ribbit</item>
     </style>
 
-    <style name="ActionBarTabStyle.Ribbit" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+    <style name="ActionBarTabStyle.Ribbit" parent="@android:style/Widget.Holo.Light.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_ribbit</item>
     </style>
 
-    <style name="DropDownNav.Ribbit" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+    <style name="DropDownNav.Ribbit" parent="@android:style/Widget.Holo.Light.Spinner">
         <item name="android:background">@drawable/spinner_background_ab_ribbit</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_ribbit</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_ribbit</item>
     </style>
 
-    <style name="ProgressBar.Ribbit" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+    <style name="ProgressBar.Ribbit" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_ribbit</item>
     </style>
 
-    <style name="ActionButton.CloseMode.Ribbit" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
+    <style name="ActionButton.CloseMode.Ribbit" parent="@android:style/Widget.Holo.Light.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_ribbit</item>
     </style>
 
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
-    <style name="Theme.Ribbit.Widget" parent="@style/Theme.AppCompat">
-        <item name="popupMenuStyle">@style/PopupMenu.Ribbit</item>
-        <item name="dropDownListViewStyle">@style/DropDownListView.Ribbit</item>
+    <style name="Theme.Ribbit.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Ribbit</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Ribbit</item>
     </style>
 
     <!-- Generated with http://android-holo-colors.com -->

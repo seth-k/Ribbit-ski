@@ -1,10 +1,10 @@
 package seth_k.app.ribbit;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,8 +15,8 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 
-public class SignupActivity extends ActionBarActivity {
-    
+public class SignupActivity extends Activity {
+
     protected EditText mUsername;
     protected EditText mPassword;
     protected EditText mEmail;
@@ -25,11 +25,11 @@ public class SignupActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         actionBar.hide();
 
         mUsername = (EditText) findViewById(R.id.usernameField);
@@ -46,7 +46,7 @@ public class SignupActivity extends ActionBarActivity {
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setSupportProgressBarIndeterminateVisibility(true);
+                setProgressBarIndeterminateVisibility(true);
 
                 String username = mUsername.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
@@ -68,7 +68,7 @@ public class SignupActivity extends ActionBarActivity {
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {
-                            setSupportProgressBarIndeterminateVisibility(false);
+                            setProgressBarIndeterminateVisibility(false);
 
                             if (e == null) {
                                 // Success!
