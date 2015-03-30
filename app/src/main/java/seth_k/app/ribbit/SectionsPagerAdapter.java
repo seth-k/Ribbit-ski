@@ -2,6 +2,7 @@ package seth_k.app.ribbit;
 
 /**
  * Created by Seth on 3/23/2015.
+ * A helper class for the 2 pages/tabs of the Main Activity, (Inbox and Friends)
  */
 
 import android.content.Context;
@@ -55,7 +56,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     }
 
     public int getIcon (int position) {
-        Locale l = Locale.getDefault();
         switch (position) {
             case 0:
                 return R.drawable.ic_tab_inbox;
