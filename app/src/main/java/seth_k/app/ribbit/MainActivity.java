@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -45,53 +44,53 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     protected DialogInterface.OnClickListener mDialogListener =
             new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            switch (which) {
-                case 0: // take picture
-                    Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-                    if (mMediaUri == null) {
-                        Toast.makeText(MainActivity.this,
-                                getString(R.string.error_external_storage),
-                                Toast.LENGTH_LONG)
-                                .show();
-                    } else {
-                        takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
-                        startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case 0: // take picture
+                            Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+                            if (mMediaUri == null) {
+                                Toast.makeText(MainActivity.this,
+                                        getString(R.string.error_external_storage),
+                                        Toast.LENGTH_LONG)
+                                        .show();
+                            } else {
+                                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+                                startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
+                            }
+                            break;
+                        case 1: // take video
+                            Intent videoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                            mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+                            if (mMediaUri == null) {
+                                Toast.makeText(MainActivity.this,
+                                        getString(R.string.error_external_storage),
+                                        Toast.LENGTH_LONG)
+                                        .show();
+                            } else {
+                                videoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+                                videoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
+                                videoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
+                                startActivityForResult(videoIntent, TAKE_VIDEO_REQUEST);
+                            }
+                            break;
+                        case 2: // choose picture
+                            Intent choosePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                            choosePhotoIntent.setType("image/*");
+                            startActivityForResult(choosePhotoIntent, PICK_PHOTO_REQUEST);
+                            break;
+                        case 3: // choose video
+                            Intent chooseVideoIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                            chooseVideoIntent.setType("video/*");
+                            Toast.makeText(MainActivity.this,
+                                    getString(R.string.video_file_size_warning),
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                            startActivityForResult(chooseVideoIntent, PICK_VIDEO_REQUEST);
+                            break;
                     }
-                    break;
-                case 1: // take video
-                    Intent videoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-                    mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
-                    if (mMediaUri == null) {
-                        Toast.makeText(MainActivity.this,
-                                getString(R.string.error_external_storage),
-                                Toast.LENGTH_LONG)
-                                .show();
-                    } else {
-                        videoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
-                        videoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
-                        videoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
-                        startActivityForResult(videoIntent, TAKE_VIDEO_REQUEST);
-                    }
-                    break;
-                case 2: // choose picture
-                    Intent choosePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                    choosePhotoIntent.setType("image/*");
-                    startActivityForResult(choosePhotoIntent, PICK_PHOTO_REQUEST);
-                    break;
-                case 3: // choose video
-                    Intent chooseVideoIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                    chooseVideoIntent.setType("video/*");
-                    Toast.makeText(MainActivity.this,
-                            getString(R.string.video_file_size_warning),
-                            Toast.LENGTH_LONG)
-                            .show();
-                    startActivityForResult(chooseVideoIntent, PICK_VIDEO_REQUEST);
-                    break;
-            }
-        }
+                }
 
                 private Uri getOutputMediaFileUri(int mediaType) {
                     // To be safe, you should check that the SDCard is mounted
@@ -205,7 +204,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         if (resultCode == RESULT_OK) {
             //Add it to the Gallery
 
-            if (requestCode == PICK_PHOTO_REQUEST || requestCode == PICK_VIDEO_REQUEST){
+            if (requestCode == PICK_PHOTO_REQUEST || requestCode == PICK_VIDEO_REQUEST) {
                 if (data == null) {
                     Toast.makeText(this, getString(R.string.general_error_toast), Toast.LENGTH_LONG).show();
                 } else {
@@ -218,10 +217,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     InputStream inputStream = null;
                     try {
                         inputStream = getContentResolver().openInputStream(mMediaUri);
-                        fileSize= inputStream.available();
-                    } catch (FileNotFoundException e) {
-                        Toast.makeText(this, getString(R.string.error_opening_file), Toast.LENGTH_LONG).show();
-                        return;
+                        fileSize = inputStream.available();
                     } catch (IOException e) {
                         Toast.makeText(this, getString(R.string.error_opening_file), Toast.LENGTH_LONG).show();
                         return;
@@ -237,9 +233,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     }
                 }
             } else {
-            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            mediaScanIntent.setData(mMediaUri);
-            sendBroadcast(mediaScanIntent);
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                mediaScanIntent.setData(mMediaUri);
+                sendBroadcast(mediaScanIntent);
             }
 
             Intent recipientsIntent = new Intent(this, RecipientsActivity.class);

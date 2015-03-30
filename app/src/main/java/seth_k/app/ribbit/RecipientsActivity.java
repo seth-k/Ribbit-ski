@@ -51,29 +51,33 @@ public class RecipientsActivity extends ListActivity {
         // My solution for showing to Action Bar to access the send button?
         // Don't. Just make the app work with a send button below the recipient list
 
-        mSendButon = (Button)findViewById(R.id.send_button);
+        mSendButon = (Button) findViewById(R.id.send_button);
         mSendButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseObject message = createMessage();
-                if (message == null) {
-                    // error
-                    AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
-                    builder.setMessage(R.string.file_error_text);
-                    builder.setTitle(R.string.general_error_title);
-                    builder.setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-
-                } else {
-                    send(message);
-                    finish();
-                }
+                createAndSendMessage();
             }
         });
 
         mMediaUri = getIntent().getData();
         mFileType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
+    }
+
+    private void createAndSendMessage() {
+        ParseObject message = createMessage();
+        if (message == null) {
+            // error
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.file_error_text);
+            builder.setTitle(R.string.general_error_title);
+            builder.setPositiveButton(android.R.string.ok, null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+        } else {
+            send(message);
+            finish();
+        }
     }
 
     private void send(ParseObject message) {
@@ -115,7 +119,7 @@ public class RecipientsActivity extends ListActivity {
                     mFriends = friends;
 
                     String[] usernames = new String[mFriends.size()];
-                    int i=0;
+                    int i = 0;
                     for (ParseUser user : mFriends) {
                         usernames[i] = user.getUsername();
                         i++;
@@ -139,31 +143,30 @@ public class RecipientsActivity extends ListActivity {
         });
     }
 
-//    Doesn't want to work with newer versions of Android/appcompat
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_recipients, menu);
-//        mSendMenuItem = menu.getItem(0);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_send) {
-//            ParseObject message = createMessage();
-////            send(message);
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    //    Doesn't want to work with newer versions of Android/appcompat
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_recipients, menu);
+        mSendMenuItem = menu.getItem(0);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_send) {
+            createAndSendMessage();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     private ParseObject createMessage() {
         ParseObject message = new ParseObject(ParseConstants.CLASS_MESSAGES);
@@ -191,7 +194,7 @@ public class RecipientsActivity extends ListActivity {
 
     private ArrayList<String> getRecipientIds() {
         ArrayList<String> recipientIds = new ArrayList<>();
-        for (int i=0; i < getListView().getCount(); i++) {
+        for (int i = 0; i < getListView().getCount(); i++) {
             if (getListView().isItemChecked(i)) {
                 recipientIds.add(mFriends.get(i).getObjectId());
             }
@@ -205,8 +208,10 @@ public class RecipientsActivity extends ListActivity {
 
         if (l.getCheckedItemCount() > 0) {
             mSendButon.setVisibility(View.VISIBLE);
+            mSendMenuItem.setVisible(true);
         } else {
             mSendButon.setVisibility(View.INVISIBLE);
+            mSendMenuItem.setVisible(false);
         }
     }
 }
