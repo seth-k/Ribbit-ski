@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,7 +34,6 @@ public class RecipientsActivity extends ListActivity {
     protected ParseRelation<ParseUser> mFriendsRelation;
     protected ParseUser mCurrentUser;
     protected MenuItem mSendMenuItem;
-    protected Button mSendButon;
     protected Uri mMediaUri;
     protected String mFileType;
 
@@ -45,19 +43,6 @@ public class RecipientsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipients);
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
-        // Unlike the reference app at treehouse.com, ListActivity doesn't show the Action Bar in
-        // new versions of Android (21/22).
-        // My solution for showing to Action Bar to access the send button?
-        // Don't. Just make the app work with a send button below the recipient list
-
-        mSendButon = (Button) findViewById(R.id.send_button);
-        mSendButon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createAndSendMessage();
-            }
-        });
 
         mMediaUri = getIntent().getData();
         mFileType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
@@ -143,7 +128,6 @@ public class RecipientsActivity extends ListActivity {
         });
     }
 
-    //    Doesn't want to work with newer versions of Android/appcompat
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -207,10 +191,8 @@ public class RecipientsActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
 
         if (l.getCheckedItemCount() > 0) {
-            mSendButon.setVisibility(View.VISIBLE);
             mSendMenuItem.setVisible(true);
         } else {
-            mSendButon.setVisibility(View.INVISIBLE);
             mSendMenuItem.setVisible(false);
         }
     }
