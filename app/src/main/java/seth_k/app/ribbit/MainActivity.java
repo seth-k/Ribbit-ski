@@ -129,8 +129,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     } else {
                         return null;
                     }
-
-
                 }
 
                 private boolean isExternalStorageAvailable() {
@@ -179,7 +177,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
         mViewPager
                 .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
                     @Override
@@ -188,11 +185,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     }
                 });
 
-
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             actionBar.addTab(
                     actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
+                            .setIcon(mSectionsPagerAdapter.getIcon(i))
                             .setTabListener(this));
         }
     }
@@ -259,7 +255,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         startActivity(intent);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -301,11 +296,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
     }
 }
