@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.ui;
 
 
 import android.app.ActionBar;
@@ -26,6 +26,10 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import seth_k.app.ribbit.ParseConstants;
+import seth_k.app.ribbit.R;
+import seth_k.app.ribbit.adapter.SectionsPagerAdapter;
 
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {

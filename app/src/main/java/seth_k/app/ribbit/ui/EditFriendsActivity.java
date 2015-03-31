@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.ui;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -16,6 +16,9 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.List;
+
+import seth_k.app.ribbit.ParseConstants;
+import seth_k.app.ribbit.R;
 
 
 public class EditFriendsActivity extends ListActivity {

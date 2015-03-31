@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="seth_k.app.ribbit.RecipientsActivity">
+      tools:context="seth_k.app.ribbit.ui.RecipientsActivity">
     <item
         android:id="@+id/action_send"
         android:title="@string/action_send"

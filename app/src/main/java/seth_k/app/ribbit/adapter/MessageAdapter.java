@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.parse.ParseObject;
 
 import java.util.List;
+
+import seth_k.app.ribbit.ParseConstants;
+import seth_k.app.ribbit.R;
 
 /**
  * Created by Seth on 3/27/2015.

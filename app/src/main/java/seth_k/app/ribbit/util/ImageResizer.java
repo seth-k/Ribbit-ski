@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.util;
 
 import java.io.ByteArrayOutputStream;
 

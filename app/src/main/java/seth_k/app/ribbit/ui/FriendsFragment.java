@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.ui;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -16,7 +16,9 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
 import java.util.List;
-import java.util.MissingFormatArgumentException;
+
+import seth_k.app.ribbit.ParseConstants;
+import seth_k.app.ribbit.R;
 
 /**
  * Created by Seth on 3/23/2015.

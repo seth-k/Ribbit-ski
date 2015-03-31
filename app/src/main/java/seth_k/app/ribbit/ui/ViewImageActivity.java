@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.ui;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -9,6 +9,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import seth_k.app.ribbit.R;
 
 
 public class ViewImageActivity extends Activity {

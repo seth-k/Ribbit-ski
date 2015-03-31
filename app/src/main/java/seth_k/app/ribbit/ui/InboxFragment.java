@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.ui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +18,10 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import seth_k.app.ribbit.adapter.MessageAdapter;
+import seth_k.app.ribbit.ParseConstants;
+import seth_k.app.ribbit.R;
 
 /**
  * Created by Seth on 3/23/2015.

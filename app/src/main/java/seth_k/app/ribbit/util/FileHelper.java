@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,6 +12,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
+
+import seth_k.app.ribbit.ParseConstants;
 
 public class FileHelper {
 	

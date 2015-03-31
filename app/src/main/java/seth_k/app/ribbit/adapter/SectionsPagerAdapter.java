@@ -1,4 +1,4 @@
-package seth_k.app.ribbit;
+package seth_k.app.ribbit.adapter;
 
 /**
  * Created by Seth on 3/23/2015.
@@ -11,6 +11,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.Locale;
+
+import seth_k.app.ribbit.R;
+import seth_k.app.ribbit.ui.FriendsFragment;
+import seth_k.app.ribbit.ui.InboxFragment;
 
 /**
  * A {@link android.support.v4.app.FragmentPagerAdapter} that returns a fragment corresponding to
