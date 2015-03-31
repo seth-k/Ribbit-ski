@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -26,14 +28,24 @@ import seth_k.app.ribbit.R;
 /**
  * Created by Seth on 3/23/2015.
  */
-public class InboxFragment extends ListFragment{
+public class InboxFragment extends ListFragment {
 
     protected List<ParseObject> mMessages;
+    protected SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_inbox, container, false);
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
+        mSwipeRefreshLayout.setColorScheme(
+                R.color.swipeRefresh1,
+                R.color.swipeRefresh2,
+                R.color.swipeRefresh3,
+                R.color.swipeRefresh4);
+
         return rootView;
     }
 
@@ -42,6 +54,10 @@ public class InboxFragment extends ListFragment{
         super.onResume();
 
         getActivity().setProgressBarIndeterminateVisibility(true);
+        retrieveMessages();
+    }
+
+    private void retrieveMessages() {
         ParseQuery<ParseObject> query = new ParseQuery<>(ParseConstants.CLASS_MESSAGES);
         query.whereEqualTo(ParseConstants.KEY_RECIPIENT_IDS, ParseUser.getCurrentUser().getObjectId());
         query.addDescendingOrder(ParseConstants.KEY_CREATED_AT);
@@ -50,22 +66,26 @@ public class InboxFragment extends ListFragment{
             public void done(List<ParseObject> messages, ParseException e) {
                 getActivity().setProgressBarIndeterminateVisibility(false);
 
+                if (mSwipeRefreshLayout.isRefreshing()) {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+
                 if (e == null) {
                     // We found messages!
                     mMessages = messages;
 
                     String[] usernames = new String[mMessages.size()];
-                    int i=0;
+                    int i = 0;
                     for (ParseObject message : mMessages) {
                         usernames[i] = message.getString(ParseConstants.KEY_SENDER_NAME);
                         i++;
                     }
-                    if (getListView().getAdapter() ==  null) {
-                        MessageAdapter adapter = new MessageAdapter(getListView().getContext(),mMessages);
+                    if (getListView().getAdapter() == null) {
+                        MessageAdapter adapter = new MessageAdapter(getListView().getContext(), mMessages);
                         setListAdapter(adapter);
                     } else {
                         //refill the adapter!
-                        ((MessageAdapter)getListView().getAdapter()).refill(mMessages);
+                        ((MessageAdapter) getListView().getAdapter()).refill(mMessages);
                     }
                 }
             }
@@ -89,7 +109,7 @@ public class InboxFragment extends ListFragment{
             Intent intent = new Intent(Intent.ACTION_VIEW, fileUri);
             intent.setDataAndType(fileUri, "video/*");
             startActivity(intent);
-        };
+        }
 
         // Delete it!
         List<String> ids = message.getList(ParseConstants.KEY_RECIPIENT_IDS);
@@ -105,4 +125,11 @@ public class InboxFragment extends ListFragment{
             message.saveInBackground();
         }
     }
+
+    protected SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            retrieveMessages();
+        }
+    };
 }
