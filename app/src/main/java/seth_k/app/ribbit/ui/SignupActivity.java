@@ -15,6 +15,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 import seth_k.app.ribbit.R;
+import seth_k.app.ribbit.RibbitApplication;
 
 
 public class SignupActivity extends Activity {
@@ -74,6 +75,8 @@ public class SignupActivity extends Activity {
 
                             if (e == null) {
                                 // Success!
+                                RibbitApplication.updateParseInstallation(ParseUser.getCurrentUser());
+
                                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

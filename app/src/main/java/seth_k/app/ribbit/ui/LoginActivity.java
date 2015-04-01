@@ -17,6 +17,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import seth_k.app.ribbit.R;
+import seth_k.app.ribbit.RibbitApplication;
 
 
 public class LoginActivity extends Activity {
@@ -69,6 +70,8 @@ public class LoginActivity extends Activity {
 
                             if (e == null) {
                                 // Success
+                                RibbitApplication.updateParseInstallation(parseUser);
+
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
