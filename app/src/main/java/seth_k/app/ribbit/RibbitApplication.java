@@ -3,6 +3,8 @@ package seth_k.app.ribbit;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseInstallation;
+import com.parse.PushService;
 
 /**
  * Created by Seth on 3/23/2015.
@@ -17,5 +19,7 @@ public class RibbitApplication extends Application {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "E8soxPtReDRFEFbKThWEtwxyVtvLwJV0C88ucSu5", "9ac6VsHCY8AmCKddUIXSGiGSuq7eswQac90ITn5h");
+
+        ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 }
