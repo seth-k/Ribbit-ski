@@ -11,9 +11,9 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
-    <string name="login_button_label">Sign In</string>
+    <string name="login_button_label">SIGN IN</string>
     <string name="signup_text">Don\'t have an account? Sign up!</string>
-    <string name="signup_button_text">Sign up!</string>
+    <string name="signup_button_text">SIGN UP!</string>
     <string name="signup_error_message">Please make sure you enter a username, password, and email address.</string>
     <string name="signup_error_title">Oops!</string>
     <string name="title_activity_signup">SignupActivity</string>
@@ -24,7 +24,7 @@
     <string name="empty_inbox_label">No New Messages</string>
     <string name="empty_friends_label">No Friends</string>
     <string name="action_edit_friends">Edit Friends</string>
-    <string name="title_activity_edit_friends">EditFriendsActivity</string>
+    <string name="title_activity_edit_friends">Edit Friends</string>
     <string name="general_error_title">We\'re Sorry!</string>
     <string name="menu_camera_label">Camera</string>
     <string name="error_external_storage">There was a problem accessing your device\'s external storage.</string>
@@ -52,4 +52,5 @@
     <string name="content_desc_button_divider">button divider</string>
     <string name="content_desc_message_icon">Message Icon</string>
     <string name="content_desc_user_avatar">User Avatar</string>
+    <string name="content_desc_user_checkmark">User Checkmark</string>
 </resources>

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -38,7 +37,7 @@ public class FriendsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
+        View rootView = inflater.inflate(R.layout.user_grid, container, false);
         mGridView = (GridView) rootView.findViewById(R.id.friendsGrid);
 
         TextView emptyTextView = (TextView) rootView.findViewById(android.R.id.empty);
@@ -66,13 +65,6 @@ public class FriendsFragment extends Fragment {
                 if (e == null) {
                     mFriends = friends;
 
-                    String[] usernames = new String[mFriends.size()];
-                    int i=0;
-                    for (ParseUser user : mFriends) {
-                        usernames[i] = user.getUsername();
-                        i++;
-                    }
-
                     if (mGridView.getAdapter() == null) {
                         UserAdapter adapter = new UserAdapter(getActivity(), mFriends);
                         mGridView.setAdapter(adapter);
@@ -88,10 +80,7 @@ public class FriendsFragment extends Fragment {
                     builder.setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
                 }
-
-
             }
         });
     }

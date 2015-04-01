@@ -5,15 +5,17 @@
               android:background="@android:color/white">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/userImageView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:src="@drawable/avatar_empty"
         android:contentDescription="@string/content_desc_user_avatar"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"/>
+        style="@style/GridImage"/>
+
+    <ImageView
+        android:id="@+id/checkImageView"
+        android:src="@drawable/avatar_selected"
+        android:contentDescription="@string/content_desc_user_checkmark"
+        style="@style/GridImage"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"

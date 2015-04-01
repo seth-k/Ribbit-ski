@@ -45,7 +45,7 @@ public class RecipientsActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipients);
+        setContentView(R.layout.user_grid);
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         mMediaUri = getIntent().getData();
